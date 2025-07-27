@@ -870,7 +870,10 @@ thing Fatso "Wendigo"
 		ICEY F 4
 		Goto See
 	Death:
-		ICEY A 5 A_Fall
+		ICEY H 5 A_Scream
+		ICEY I 5 A_Fall
+		ICEY JKLM 5
+		ICEY N -1
 		Stop
 	}
 }
