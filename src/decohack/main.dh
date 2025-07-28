@@ -15,13 +15,18 @@ strings
 	STR_GOTMEGA "Chainmail Armor"
 	STR_GOTSUPER "Mystic Urn"
 
+	STR_GOTCLIP "Energy Orb"
+	STR_GOTCLIPBOX "Large Energy Orb"
+	STR_GOTCELL "Flame Orb"
+	STR_GOTCELLBOX "Inferno Orb"
+
 	STR_GOTCHAINSAW "Gauntlets of the Necromancer"
 	STR_GOTSHOTGUN "Jade Wand"
 	STR_GOTSHOTGUN2 "Ruby Wand"
 	STR_GOTCHAINGUN "Blaster"
 	STR_GOTLAUNCHER "Hammer of Retribution"
 	STR_GOTPLASMA "Phoenix Rod"
-	STR_GOTBFG9000 "Wraithverge"
+	STR_GOTBFG9000 "Fire Spell"
 
 	STR_SPR_STIM "PTN1"
 	STR_SPR_MEDI "PTN2"
@@ -31,13 +36,18 @@ strings
 	STR_SPR_SOUL "SPHL"
 	STR_SPR_PVIS "TRCH"
 
+	STR_SPR_CLIP "AMB1"
+	STR_SPR_AMMO "AMB2"
+	STR_SPR_CELL "AMP1"
+	STR_SPR_CELP "AMP2"
+
 	STR_SPR_CSAW "WGNT"
 	STR_SPR_SHOT "WJAD"
 	STR_SPR_SGN2 "WRUB"
 	STR_SPR_MGUN "WBLS"
 	STR_SPR_LAUN "WFHM"
 	STR_SPR_PLAS "WPHX"
-	STR_SPR_BFUG "WCHS"
+	STR_SPR_BFUG "WMCF"
 
 	STR_SPR_PUNG "FPCH"
 	STR_SPR_SAWG "GAUN"
@@ -47,7 +57,7 @@ strings
 	STR_SPR_CHGG "BLSR"
 	STR_SPR_MISG "FHMR"
 	STR_SPR_PLSG "PHNX"
-	STR_SPR_BFGG "CHLY"
+	STR_SPR_BFGG "CONF"
 	STR_SPR_MISL "FHFX"
 	STR_SPR_PLSS "FX09"
 	STR_SPR_BFS1 "NONE"
@@ -67,6 +77,11 @@ strings
 	STR_SPR_CYBR "MNTR"
 	STR_SPR_FATT "ICEY"
 	STR_SPR_FATB "ICPR"
+	STR_SPR_PAIN "WRTH"
+	STR_SPR_BOSS "CENT"
+	STR_SPR_BOS2 "NULL"
+	STR_SPR_BAL7 "CTFX"
+	STR_SPR_BSPI "SNKE"
 }
 
 thing WolfensteinSS free states
@@ -85,7 +100,12 @@ thing GreenArmor free states
 thing BlueArmor free states
 thing ArmorBonus free states
 thing SoulSphere free states
-//thing Infrared free states
+thing Infrared free states
+
+thing Clip free states
+thing ClipBox free states
+thing Cell free states
+thing CellPack free states
 
 weapon Fist free states
 weapon Chainsaw free states
@@ -100,6 +120,7 @@ thing PlasmaBall free states
 weapon BFG9000 free states
 thing BFGBall free states
 thing BFGExtra free states
+thing BFG9000 free states
 
 thing Zombieman free states
 thing ShotgunGuy free states
@@ -107,13 +128,20 @@ thing DoomImp free states
 thing DoomImpBall free states
 thing Demon free states
 thing Cacodemon free states
+thing CacodemonBall free states
 thing Revenant free states
 thing RevenantTracer free states
+thing PainElemental free states
 thing LostSoul free states
 thing Archvile free states
 thing ArchvileFire free states
 thing Fatso free states
 thing FatShot free states
+thing HellKnight free states
+thing BaronOfHell free states
+thing BaronBall free states
+thing ArachnotronPlasma free states
+thing Arachnotron free states
 thing Cyberdemon free states
 
 thing GreenArmor "Falcon Shield"
@@ -180,8 +208,57 @@ thing Infrared "Torch"
 	}
 }
 
+thing Clip "Energy Orb (small)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMB1 ABC 4 Bright
+		Loop
+	}
+}
+
+thing ClipBox "Energy Orb (large)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMB2 ABC 4 Bright
+		Loop
+	}
+}
+
+thing Cell "Energy Orb (small)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMP1 ABC 4 Bright
+		Loop
+	}
+}
+
+thing CellPack "Energy Orb (large)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMP2 ABC 4 Bright
+		Loop
+	}
+}
+
 weapon Fist
 {
+	clear states
 	states
 	{
 	Select:
@@ -207,6 +284,7 @@ weapon Fist
 
 weapon Chainsaw "Necromancer Gauntlets"
 {
+	clear states
 	states
 	{
 	Select:
@@ -227,9 +305,9 @@ weapon Chainsaw "Necromancer Gauntlets"
 	}
 }
 
-
 weapon Pistol "Gold Wand"
 {
+	clear states
 	states
 	{
 	Ready:
@@ -400,6 +478,10 @@ state protect S_PLASMAFLASH1 to S_PLASMAFLASH2
 
 weapon PlasmaRifle "Phoenix Rod"
 {
+	clear state Ready
+	clear state Deselect
+	clear state Select
+	clear state Fire
 	states
 	{
 	Ready:
@@ -440,33 +522,34 @@ thing PlasmaBall "Phoenix Rod Flame"
 	}
 }
 
-weapon BFG9000 "Wraithverge"
+weapon BFG9000 "Fire Spell"
 {
 	clear states
 	states
 	{
-	Deselect:
-		CHLY A 0 QLOWER_OFFS
-		CHLY A 1 A_Lower
-		Wait
 	Select:
-		CHLY A 0 QRAISE_OFFS
-		CHLY A 1 A_Raise
+		CONF A 0 QRAISE_OFFS
+		CONF A 1 A_Raise
+		Wait
+	Deselect:
+		CONF A 0 QLOWER_OFFS
+		CONF A 1 A_Lower
 		Wait
 	Ready:
-		CHLY A 2 Bright A_WeaponReady
+		CONF AABBCC 2 A_WeaponReady
 		Loop
 	Fire:
-		CHLY AB 1 Bright Offset(1, 40) A_BFGsound
-		CHLY CD 2 Bright Offset(1, 43)
-		CHLY E 2 Bright Offset(1, 45)
-		CHLY F 6 Bright Offset(1, 48) A_FireBFG
-		CHLY G 6 Bright Offset(1, 40)
+		CONF D 3 Offset(1, 32)
+		CONF EF 3
+		CONF G 5 Bright
+		CONF H 3 Bright { A_FireBFG A_BFGsound }
+		CONF FED 3
+		CONF A 2 A_ReFire
 		Goto Ready
 	}
 }
 
-thing BFGBall "Wraithverge Helper"
+thing BFGBall "Fire Spell Helper"
 {
 	Damage 0
 	Speed 0
@@ -494,6 +577,17 @@ thing BFGExtra
 		FIRE C 4 Bright A_Explode
 		FIRE EG 4 Bright
 		Stop
+	}
+}
+
+thing BFG9000
+{
+	clear states
+	states
+	{
+	Spawn:
+		WMCF ABCB 4 Bright
+		Loop
 	}
 }
 
@@ -540,12 +634,12 @@ thing ShotgunGuy : thing Zombieman "Nitrogolem"
 	states
 	{
 	Missile:
-		MUMM X 4 A_FaceTarget
-		MUMM Y 4 Bright A_FaceTarget
-		MUMM X 4 A_FaceTarget
-		MUMM Y 4 Bright A_FaceTarget
-		MUMM X 4 A_FaceTarget
-		MUMM Y 4 Bright A_TroopAttack
+		MUMM R 4 A_FaceTarget
+		MUMM Q 4 Bright A_FaceTarget
+		MUMM R 4 A_FaceTarget
+		MUMM Q 4 Bright A_FaceTarget
+		MUMM R 4 A_FaceTarget
+		MUMM Q 4 Bright A_TroopAttack
 		Goto See
 	}
 }
@@ -634,6 +728,12 @@ thing Demon "Ettin"
 	}
 }
 
+thing Spectre : thing Demon "Cloaked Ettin"
+{
+	ednum 58
+	+SHADOW
+}
+
 thing Cacodemon "Iron Lich"
 {
 	Speed 5
@@ -693,6 +793,40 @@ thing CacodemonBall "Iron Lich Whirlwind"
 	}
 }
 
+thing PainElemental "Reiver"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		WRTH AB 10 A_Look
+		Loop
+	See:
+		WRTH ABCD 4 A_Chase
+		Loop
+	Pain:
+		WRTH A 2
+		WRTH H 6 A_Pain
+		Goto See
+	Melee:
+	Missile:
+		WRTH E 6 A_FaceTarget
+		WRTH F 6 A_FaceTarget
+		WRTH G 6 { A_SkelFist A_PainAttack }
+		Goto See
+	Death:
+		WRTH I 4
+		WRTH J 4 A_Scream
+		WRTH KL 4
+		WRTH M 4 A_PainDie
+		WRTH NO 4
+		WRTH PQ 5
+		WRTH R -1
+		Stop
+	}
+}
+
 thing LostSoul "Gargoyle"
 {
 	Speed 10
@@ -723,10 +857,7 @@ thing LostSoul "Gargoyle"
 	Death:
 		IMPX G 4 A_Scream
 		IMPX H 7 A_Fall
-		IMPX I 7
-		IMPX J 7 A_Scream
-		IMPX K 7
-		IMPX L -1
+		IMPX IJKL 7
 		Stop
 	}
 }
@@ -794,7 +925,6 @@ thing Archvile "Bishop"
 	Spawn:
 		BISH A 10 A_Look
 		Loop
-
 	See:
 		BISH A 35
 		TFOG AC 5 Bright
@@ -802,13 +932,13 @@ thing Archvile "Bishop"
 	Missile:
 		TFOG C 5 Bright A_VileTarget
 		TFOG A 5 Bright A_VileTarget
-		BISH D 4 Bright A_TroopAttack
+		BISH D 4 Bright A_BruisAttack
 		BISH E 4 Bright A_FaceTarget
 		BISH F 8 Bright	A_TroopAttack
 		Goto See
 	Heal:
 		BISH DEF 10 Bright
-		Stop
+		Goto See
 	Death:
 		BISH H 6 Bright A_Scream
 		BISH I 5 Bright A_Fall
@@ -873,7 +1003,7 @@ thing Fatso "Wendigo"
 		ICEY H 5 A_Scream
 		ICEY I 5 A_Fall
 		ICEY JKLM 5
-		ICEY N -1
+		ICEY N -1 A_BossDeath
 		Stop
 	}
 }
@@ -895,6 +1025,139 @@ thing FatShot "Wendigo Shot"
 	Death:
 		ICPR DEFG 4 Bright
 		ICPR H 3 Bright
+		Stop
+	}
+}
+
+thing BaronOfHell "Slaughtaur"
+{
+	+TRANSLATION
+	+UNUSED1
+	PainChance 96
+	Mass 100000
+	Speed 10
+
+	clear states
+	states
+	{
+	Spawn:
+		CENT A 10 A_Look
+		Loop
+	See:
+		CENT ABCD 4 A_Chase
+		Loop
+	Pain:
+		CENT G 12 A_Pain
+		CENT EEE 15 { A_Chase A_BspiAttack }
+		Goto See
+	Melee:
+		CENT H 5 A_FaceTarget
+		CENT I 4 A_FaceTarget
+		CENT J 7 A_SkelFist
+		Goto See
+	Missile:
+		CENT E 10 A_FaceTarget
+		CENT F 8 Bright A_BruisAttack
+		CENT E 10 A_FaceTarget
+		CENT F 8 Bright A_BruisAttack
+		Goto See
+	Death:
+		CENT K 4
+		CENT L 4 A_Scream
+		CENT MN 4
+		CENT O 4 A_Fall
+		CENT PQRS 4
+		CENT T -1
+		Stop
+	}
+}
+
+thing HellKnight : thing BaronOfHell "Slaughtaur"
+{
+	-UNUSED1
+	PainChance 135
+	Health 500
+	ednum 69
+	Speed 13
+
+	clear state Missile
+}
+
+thing BaronBall "Slaughtaur Shot"
+{
+	Speed 20
+	Damage 4
+
+	clear states
+	states
+	{
+	Spawn:
+		CTFX A 1 Bright
+		Loop
+	Death:
+		CTFX B 4 Bright
+		CTFX C 3 Bright
+		CTFX D 4 Bright
+		CTFX E 3 Bright
+		CTFX F 2 Bright
+		Stop
+	}
+}
+
+thing ArachnotronPlasma
+{
+	+NOBLOOD
+	+SHOOTABLE
+	-NOGRAVITY
+	-NOBLOCKMAP
+	-MISSILE
+	-SOLID
+	Mass 100000
+	Radius 26
+	Height 64
+	Speed 2
+
+	clear states
+	states
+	{
+	Spawn:
+	Death:
+		NULL A 0
+		NULL A 15 A_Chase
+		Stop
+	}
+}
+
+thing Arachnotron "Ophidian"
+{
+	Radius 24
+
+	clear states
+	states
+	{
+	Spawn:
+		SNKE A 10 A_Look
+		Loop
+	See:
+		SNKE ABCD 4 A_Chase
+		Loop
+	Missile:
+		SNKE FF 5 A_FaceTarget
+		SNKE FFF 4 A_TroopAttack
+		SNKE FFF 5 A_FaceTarget
+		SNKE F 4 A_BruisAttack
+		Goto See
+	Pain:
+		SNKE E 3
+		SNKE E 3 A_Pain
+		Goto See
+	Death:
+		SNKE G 5
+		SNKE H 5 A_Scream
+		SNKE IJKL 5
+		SNKE M 5 A_Fall
+		SNKE NO 5
+		SNKE P -1 A_BossDeath
 		Stop
 	}
 }
@@ -949,4 +1212,64 @@ thing Cyberdemon "Maulotaur"
 		MNTR T -1 A_BossDeath
 		Stop
 	}
+}
+
+thing DeadLostSoul
+{
+	clear states
+	states
+	{
+	Spawn:
+		NULL A 1
+		Stop
+	}
+}
+
+thing DeadCacodemon
+{
+	clear states
+	states
+	{
+	Spawn:
+		LICH I 1
+		Loop
+	}
+}
+
+thing DeadDemon
+{
+	clear states
+	states
+	{
+	Spawn:
+		ETTN Q 1
+		Loop
+	}
+}
+
+thing DeadDoomImp
+{
+	clear states
+	states
+	{
+	Spawn:
+		FDMN P 1
+		Loop
+	}
+}
+
+thing DeadZombieman
+{
+	clear states
+	states
+	{
+	Spawn:
+		MUMM P 1
+		Loop
+	}
+}
+
+thing DeadShotgunGuy : thing DeadZombieman
+{
+	ednum 19
 }
