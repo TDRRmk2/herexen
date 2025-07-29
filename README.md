@@ -1,4 +1,4 @@
-# [Herexen]
+# Herexen
 
 by TDRR (C) 2025 (yes I'm just using the one template doomtools creates)
 
