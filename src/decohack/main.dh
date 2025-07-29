@@ -8,25 +8,29 @@
 
 strings
 {
-	STR_GOTSTIM "Crystal Vial"
+	STR_GOTSTIM 	"Crystal Vial"
 	STR_GOTMEDINEED "Quartz Flask"
-	STR_GOTMEDIKIT "Quartz Flask"
-	STR_GOTARMOR "Falcon Shield"
-	STR_GOTMEGA "Chainmail Armor"
-	STR_GOTSUPER "Mystic Urn"
+	STR_GOTMEDIKIT 	"Quartz Flask"
+	STR_GOTARMOR 	"Falcon Shield"
+	STR_GOTMEGA 	"Chainmail Armor"
+	STR_GOTSUPER 	"Mystic Urn"
 
-	STR_GOTCLIP "Energy Orb"
-	STR_GOTCLIPBOX "Large Energy Orb"
-	STR_GOTCELL "Flame Orb"
-	STR_GOTCELLBOX "Inferno Orb"
+	STR_GOTCLIP 	"Energy Orb"
+	STR_GOTCLIPBOX 	"Large Energy Orb"
+	STR_GOTSHELLS 	"Blue Mana"
+	STR_GOTSHELLBOX "Large Blue Mana"
+	STR_GOTROCKET 	"Red Mana"
+	STR_GOTROCKBOX 	"Large Red Mana"
+	STR_GOTCELL 	"Flame Orb"
+	STR_GOTCELLBOX 	"Inferno Orb"
 
 	STR_GOTCHAINSAW "Gauntlets of the Necromancer"
-	STR_GOTSHOTGUN "Jade Wand"
+	STR_GOTSHOTGUN 	"Jade Wand"
 	STR_GOTSHOTGUN2 "Ruby Wand"
 	STR_GOTCHAINGUN "Blaster"
 	STR_GOTLAUNCHER "Hammer of Retribution"
-	STR_GOTPLASMA "Phoenix Rod"
-	STR_GOTBFG9000 "Fire Spell"
+	STR_GOTPLASMA 	"Phoenix Rod"
+	STR_GOTBFG9000 	"Fire Spell"
 
 	STR_SPR_STIM "PTN1"
 	STR_SPR_MEDI "PTN2"
@@ -38,6 +42,10 @@ strings
 
 	STR_SPR_CLIP "AMB1"
 	STR_SPR_AMMO "AMB2"
+	STR_SPR_SHEL "MAN3"
+	STR_SPR_SBOX "MAN4"
+	STR_SPR_ROCK "MAN1"
+	STR_SPR_BROK "MAN2"
 	STR_SPR_CELL "AMP1"
 	STR_SPR_CELP "AMP2"
 
@@ -82,19 +90,73 @@ strings
 	STR_SPR_BOS2 "NULL"
 	STR_SPR_BAL7 "CTFX"
 	STR_SPR_BSPI "SNKE"
+	STR_SPR_SPID "KORX"
+	STR_SPR_CPOS "MAGE"
+
+	STR_SFX_POSIT2 "POSIT1"
+	STR_SFX_POSIT3 "POSIT1"
+	STR_SFX_PODTH2 "PODTH1"
+	STR_SFX_PODTH3 "PODTH1"
+	STR_SFX_POSACT "POSIT1"
+	STR_SFX_DMACT "SGTSIT"
+	STR_SFX_KNTSIT "BRSACT" // repurposing both hellknight sounds into centaur's missing sounds
+	STR_SFX_KNTDTH "BRSPAI"
+	STR_SFX_BGSIT2 "BGSIT1"
+	STR_SFX_BGDTH2 "BGDTH1"
+	STR_SFX_SKEACT "SKESIT"
+	STR_SFX_HOOF "CYBPAI"
+	STR_SFX_SKEPCH "PUNCH"
+}
+
+misc
+{
+	bfgCellsPerShot 60
+}
+
+ammo 0
+{
+	pickup 12
 }
 
 thing WolfensteinSS free states
-thing WolfensteinSS : thing ChaingunGuy {ednum 84}
-
 thing CommanderKeen free states
-//thing SpiderMastermind free states
 
 #define QLOWER_OFFS Offset(1, 72)
 #define QRAISE_OFFS Offset(1, 62)
 
 //state protect 52 to 53
 state protect S_PLASMAFLASH1 to S_PLASMAFLASH2
+
+state S_VILE_HEAL1
+{
+	spritename "BISH"
+	frame D
+}
+
+state S_VILE_HEAL2
+{
+	spritename "BISH"
+	frame E
+}
+
+state S_VILE_HEAL3
+{
+	spritename "BISH"
+	frame F
+}
+
+state protect S_VILE_HEAL1 to S_VILE_HEAL3
+
+state free S_BRAINEXPLODE1 to S_BRAINEXPLODE3
+
+state fill S_BRAINEXPLODE1
+{
+	FHFX MO 10 Bright
+	FHFX R 10 Bright A_BrainExplode
+	Stop
+}
+
+state protect S_BRAINEXPLODE1 to S_BRAINEXPLODE3
 
 thing GreenArmor free states
 thing BlueArmor free states
@@ -124,6 +186,7 @@ thing BFG9000 free states
 
 thing Zombieman free states
 thing ShotgunGuy free states
+thing ChaingunGuy free states
 thing DoomImp free states
 thing DoomImpBall free states
 thing Demon free states
@@ -143,6 +206,7 @@ thing BaronBall free states
 thing ArachnotronPlasma free states
 thing Arachnotron free states
 thing Cyberdemon free states
+thing SpiderMastermind free states
 
 thing GreenArmor "Falcon Shield"
 {
@@ -275,7 +339,7 @@ weapon Fist
 	Fire:
 		FPCH B 5 Offset (5, 40)
 		FPCH C 4
-		FPCH D 4 { A_Punch A_Punch A_Punch }
+		FPCH D 4 { A_Punch A_Punch }
 		FPCH C 4
 		FPCH B 5 A_ReFire
 		Goto Ready
@@ -406,9 +470,10 @@ weapon Chaingun "Blaster"
 		BLSR A 1 Bright A_Raise
 		Wait
 	Fire:
-		BLSR D 0 Offset(1, 32) A_FirePistol
+		BLSR D 2 Bright Offset(1, 32) A_FirePistol
+		BLSR CB 1 Bright
 		BLSR D 2 Bright A_FirePistol
-		BLSR CB 2 Bright
+		BLSR CB 1 Bright
 		BLSR A 0 A_ReFire
 		Goto Ready
 	}
@@ -449,7 +514,7 @@ thing Rocket "Hammer projectile"
 	states
 	{
 	Spawn:
-		FHFX ACEG 4 Bright
+		FHFX ABCDEFGH 2 Bright
 		Loop
 	Death:
 		FHFX I 6 Bright
@@ -597,6 +662,8 @@ thing Zombieman "Golem"
 	Painchance 128
 	Speed 6
 
+	AttackSound ""
+
 	clear states
 	states
 	{
@@ -622,6 +689,9 @@ thing Zombieman "Golem"
 		MUMM NO 5
 		MUMM P -1
 		Stop
+	Raise:
+		MUMM ONMLKJI 5
+		Goto See
 	}
 }
 
@@ -639,7 +709,49 @@ thing ShotgunGuy : thing Zombieman "Nitrogolem"
 		MUMM R 4 A_FaceTarget
 		MUMM Q 4 Bright A_FaceTarget
 		MUMM R 4 A_FaceTarget
-		MUMM Q 4 Bright A_TroopAttack
+		MUMM Q 4 Bright { A_TroopAttack A_TroopAttack }
+		Goto See
+	}
+}
+
+thing ChaingunGuy "Evil Mage" // yeah creative name I know
+{
+	clear states
+	states
+	{
+	Spawn:
+		MAGE A 10 A_Look
+		Loop
+	See:
+		MAGE AABBCCDD 3 A_Chase
+		Loop
+	Missile:
+		MAGE E 10 A_FaceTarget
+	Refiring:
+		MAGE FE 4 Bright A_CPosAttack
+		MAGE F 1 A_CPosRefire
+		Goto Refiring
+	Pain:
+		MAGE G 3
+		MAGE G 3 A_Pain
+		Goto See
+	Death:
+		MAGE H 5
+		MAGE I 5 A_Scream
+		MAGE J 5 A_Fall
+		MAGE KLM 5
+		MAGE N -1
+		Stop
+	XDeath:
+		MAGE O 5
+		MAGE P 5 A_XScream
+		MAGE Q 5 A_Fall
+		MAGE RSTUVW 5
+		MAGE X -1
+		Stop
+	Raise:
+		MAGE N 5
+		MAGE MLKJIH 5
 		Goto See
 	}
 }
@@ -769,15 +881,16 @@ thing CacodemonBall "Iron Lich Whirlwind"
 {
 	+FLOAT
 	Damage 0
+	Speed 14
 	clear states
 
 	states
 	{
 	Spawn:
 		FX07 DEFG 3
-	Test:
+	InFlight:
 		FX07 ABC 3
-		Goto Test
+		Loop
 	See:
 		FX07 AAA 0 A_Chase
 		Goto DeathEnd
@@ -875,6 +988,10 @@ thing Revenant "Knight"
 		KNIG AABBCCDD 2 A_Chase
 		Loop
 	Melee:
+		KNIG E 8 A_FaceTarget
+		KNIG F 6 A_FaceTarget
+		KNIG G 6 A_SkelFist
+		Goto See
 	Missile:
 		KNIG E 10 A_FaceTarget
 		KNIG F 8 A_FaceTarget
@@ -884,7 +1001,7 @@ thing Revenant "Knight"
 		KNIG G 8 A_SkelMissile
 		Goto See
 	Pain:
-		KNIG H 6 A_Pain
+		KNIG H 6 A_SkelWhoosh
 		Goto See
 	Death:
 		KNIG I 6
@@ -927,18 +1044,20 @@ thing Archvile "Bishop"
 		Loop
 	See:
 		BISH A 35
+	TeleportAway:
 		TFOG AC 5 Bright
 		BISH AAAA 0 A_VileChase
 	Missile:
-		TFOG C 5 Bright A_VileTarget
-		TFOG A 5 Bright A_VileTarget
+		TFOG C 6 Bright A_VileTarget
+		TFOG A 6 Bright A_VileTarget
 		BISH D 4 Bright A_BruisAttack
 		BISH E 4 Bright A_FaceTarget
 		BISH F 8 Bright	A_TroopAttack
 		Goto See
-	Heal:
-		BISH DEF 10 Bright
-		Goto See
+	Pain:
+		BISH C 6
+		BISH C 6 A_Pain
+		Goto TeleportAway
 	Death:
 		BISH H 6 Bright A_Scream
 		BISH I 5 Bright A_Fall
@@ -952,6 +1071,8 @@ thing ArchvileFire "Bishop Clone"
 {
 	-SOLID
 	+SHOOTABLE
+	+TRANSLATION
+	+NOBLOOD
 	-NOBLOCKMAP
 	Health 1
 	Radius 8
@@ -966,21 +1087,25 @@ thing ArchvileFire "Bishop Clone"
 		Wait
 	See:
 		BISG AAAAA 0 A_Chase
+	Missile:
 		TFOG CA 5 Bright A_FaceTarget
 		BISG D 4 Bright A_FaceTarget
 		BISG E 4 Bright A_FaceTarget
 		BISG F 8 Bright	A_TroopAttack
 		Goto S_TFOG
 	Death:
-		NONE A 1
-		Stop
+		BISG C 1
+		Goto S_TFOG
 	}
 }
 
 thing Fatso "Wendigo"
 {
+	+NOBLOOD
 	Painchance 144
 	Speed 14
+
+	ActiveSound "mansit"
 
 	clear states
 	states
@@ -992,11 +1117,11 @@ thing Fatso "Wendigo"
 		ICEY ABCD 4 A_Chase
 		Loop
 	Pain:
-		ICEY A 4 A_Pain
+		ICEY A 4
 		Goto See
 	Missile:
-		ICEY EF 3 A_FaceTarget
-		ICEY G 8 Bright { A_FatAttack1 A_FatAttack2 A_FatAttack3 }
+		ICEY EF 6 A_FaceTarget
+		ICEY G 8 Bright { A_FatAttack1 A_FatAttack2 }
 		ICEY F 4
 		Goto See
 	Death:
@@ -1012,7 +1137,7 @@ thing FatShot "Wendigo Shot"
 {
 	Radius 8
 	Height 10
-	Speed 14
+	Speed 20
 	Damage 4
 
 	clear states
@@ -1033,7 +1158,7 @@ thing BaronOfHell "Slaughtaur"
 {
 	+TRANSLATION
 	+UNUSED1
-	PainChance 96
+	PainChance 32
 	Mass 100000
 	Speed 10
 
@@ -1048,7 +1173,8 @@ thing BaronOfHell "Slaughtaur"
 		Loop
 	Pain:
 		CENT G 12 A_Pain
-		CENT EEE 15 { A_Chase A_BspiAttack }
+		CENT EEE 7 A_BspiAttack
+		CENT EEE 7 { A_Chase A_BspiAttack }
 		Goto See
 	Melee:
 		CENT H 5 A_FaceTarget
@@ -1067,20 +1193,39 @@ thing BaronOfHell "Slaughtaur"
 		CENT MN 4
 		CENT O 4 A_Fall
 		CENT PQRS 4
-		CENT T -1
+		CENT T -1 A_BossDeath
 		Stop
 	}
 }
 
-thing HellKnight : thing BaronOfHell "Slaughtaur"
+thing HellKnight : thing BaronOfHell "Centaur"
 {
 	-UNUSED1
-	PainChance 135
 	Health 500
 	ednum 69
 	Speed 13
 
+	// sadly this doesn't work in Doom 1
+	ActiveSound "brsact"
+	PainSound "brspai"
+
 	clear state Missile
+	clear state Death
+	states
+	{
+	Missile:
+		CENT E 10 A_FaceTarget
+		CENT F 8 Bright A_BruisAttack
+		Goto See
+	Death:
+		CENT K 4
+		CENT L 4 A_Scream
+		CENT MN 4
+		CENT O 4 A_Fall
+		CENT PQRS 4
+		CENT T -1
+		Stop
+	}
 }
 
 thing BaronBall "Slaughtaur Shot"
@@ -1117,20 +1262,24 @@ thing ArachnotronPlasma
 	Height 64
 	Speed 2
 
+	clear sounds
 	clear states
 	states
 	{
 	Spawn:
 	Death:
 		NULL A 0
-		NULL A 15 A_Chase
+		NULL A 14 A_Chase
 		Stop
 	}
 }
 
 thing Arachnotron "Ophidian"
 {
+	PainChance 64
 	Radius 24
+
+	AttackSound "bspwlk"
 
 	clear states
 	states
@@ -1167,7 +1316,8 @@ thing Cyberdemon "Maulotaur"
 	Painchance 40
 	Speed 16
 
-	AttackSound "OOF"
+	AttackSound "rlaunc"
+	PainSound "cybpai"
 
 	clear states
 	states
@@ -1190,7 +1340,7 @@ thing Cyberdemon "Maulotaur"
 		MNTR Z 9 A_CyberAttack
 		Goto See
 	Pain:
-		MNTR E 6 A_Pain
+		MNTR E 10 A_Pain
 		MNTR U 5 A_SkullAttack
 		MNTR UUU 10 A_Explode
 		Goto See
@@ -1210,6 +1360,54 @@ thing Cyberdemon "Maulotaur"
 		MNTR R 6
 		MNTR S 5
 		MNTR T -1 A_BossDeath
+		Stop
+	}
+}
+
+thing SpiderMastermind "Korax"
+{
+	Radius 65
+
+	clear states
+	states
+	{
+	Spawn:
+		KORX A 10 A_Look
+		Loop
+	See:
+		KORX ABCDABCD 4 A_Chase
+	SpawnBishops:
+		KORX E 5 Bright A_FaceTarget
+		KORX W 10 Bright A_FaceTarget
+		KORX G 15 Bright A_VileTarget
+		KORX W 10 Bright A_VileTarget
+		KORX E 5 Bright
+		Goto See
+	Pain:
+		KORX H 8 A_Pain
+		KORX E 4 A_FaceTarget
+		KORX FF 3 A_SkelMissile
+		KORX E 4 A_FaceTarget
+		KORX FF 3 A_SkelMissile
+		KORX E 4
+		Goto See
+	Missile:
+		KORX E 6 Bright A_FaceTarget
+		KORX F 8 Bright A_BruisAttack
+		KORX E 8 Bright
+		KORX F 8 Bright { A_FatAttack1 A_FatAttack2 A_FatAttack3 }
+		KORX E 8 Bright
+		Goto See
+	Death:
+		KORX I 5
+		KORX J 5 A_FaceTarget
+		KORX K 5 A_Scream
+		KORX LMNOP 5
+		KORX Q 10
+		KORX R 5
+		KORX S 5 A_Fall
+		KORX TU 5
+		KORX V -1 A_BossDeath
 		Stop
 	}
 }
