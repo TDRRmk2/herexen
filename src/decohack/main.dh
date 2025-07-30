@@ -127,24 +127,6 @@ thing CommanderKeen free states
 //state protect 52 to 53
 state protect S_PLASMAFLASH1 to S_PLASMAFLASH2
 
-state S_VILE_HEAL1
-{
-	spritename "BISH"
-	frame D
-}
-
-state S_VILE_HEAL2
-{
-	spritename "BISH"
-	frame E
-}
-
-state S_VILE_HEAL3
-{
-	spritename "BISH"
-	frame F
-}
-
 state protect S_VILE_HEAL1 to S_VILE_HEAL3
 
 state free S_BRAINEXPLODE1 to S_BRAINEXPLODE3
@@ -1046,7 +1028,9 @@ thing Archvile "Bishop"
 		BISH A 35
 	TeleportAway:
 		TFOG AC 5 Bright
+		NONE A 1
 		BISH AAAA 0 A_VileChase
+		NONE A 1
 	Missile:
 		TFOG C 6 Bright A_VileTarget
 		TFOG A 6 Bright A_VileTarget
@@ -1066,6 +1050,17 @@ thing Archvile "Bishop"
 		Stop
 	}
 }
+
+state unprotect S_VILE_HEAL1 to S_VILE_HEAL3
+state free S_VILE_HEAL1 to S_VILE_HEAL3
+
+state fill S_VILE_HEAL1
+{
+	BISH DEF 10 Bright
+	Goto thing Archvile See
+}
+
+state protect S_VILE_HEAL1 to S_VILE_HEAL3
 
 thing ArchvileFire "Bishop Clone"
 {
@@ -1087,6 +1082,7 @@ thing ArchvileFire "Bishop Clone"
 		Wait
 	See:
 		BISG AAAAA 0 A_Chase
+		NONE A 1
 	Missile:
 		TFOG CA 5 Bright A_FaceTarget
 		BISG D 4 Bright A_FaceTarget
