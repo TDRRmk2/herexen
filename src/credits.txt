@@ -1,1 +1,4 @@
-Put full additional credits here. This will be imported into the release.
+Raven Software: The vast majority of assets on display were made by them, originally for Heretic and Hexen.
+Craneo: The paladin mugshot from Schism seen here was made by him.
+Eriance and CodenniumRed: The original art and the edited version of the Jade Wand.
+RockstarRaccoon: The edited sprites for the fire spell.

@@ -111,6 +111,7 @@ strings
 misc
 {
 	bfgCellsPerShot 60
+	initialBullets 60
 }
 
 ammo 0
@@ -119,7 +120,6 @@ ammo 0
 }
 
 thing WolfensteinSS free states
-thing CommanderKeen free states
 
 #define QLOWER_OFFS Offset(1, 72)
 #define QRAISE_OFFS Offset(1, 62)
@@ -640,7 +640,7 @@ thing BFG9000
 
 thing Zombieman "Golem"
 {
-	Health 30
+	Health 50
 	Painchance 128
 	Speed 6
 
@@ -680,7 +680,7 @@ thing Zombieman "Golem"
 thing ShotgunGuy : thing Zombieman "Nitrogolem"
 {
 	PainChance 64
-	Health 50
+	Health 60
 	ednum 9
 
 	states
@@ -736,6 +736,11 @@ thing ChaingunGuy "Evil Mage" // yeah creative name I know
 		MAGE MLKJIH 5
 		Goto See
 	}
+}
+
+thing WolfensteinSS : thing ChaingunGuy
+{
+	ednum 84
 }
 
 thing DoomImp "Afrit"
@@ -959,6 +964,8 @@ thing LostSoul "Gargoyle"
 
 thing Revenant "Knight"
 {
+	+TRANSLATION // too lazy to recolor the sprites lol
+	+UNUSED1
 	clear states
 
 	states
