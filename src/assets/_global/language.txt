@@ -1,0 +1,23 @@
+[enu default]
+OB_UNDEADHIT = "%o was slain by an Undead Warrior.";
+OB_IMPHIT = "%o got burned by an Afrit.";
+OB_CACOHIT = "%o got up-close and personal with an Ironlich.";
+OB_DEMONHIT = "%o was mashed by an Ettin.";
+OB_SPECTREHIT = "%o was mashed by a ghost Ettin.";
+OB_BARONHIT = "%o was cut up by a Slaughtaur.";
+OB_KNIGHTHIT = "%o was cut up by a Centaur.";
+OB_ZOMBIE = "%o was smashed by a Golem.";
+OB_SHOTGUY = "%o was shrieked to death by a Nitrogolem.";
+OB_VILE = "%o succumbed to a Bishop's dark power.";
+OB_UNDEAD = "%o was axed by an Undead Warrior.";
+OB_FATSO = "%o was frozen solid by a Wendigo.";
+OB_CHAINGUY = "%o got hexed by an Evil Mage.";
+OB_SKULL = "%o was hacked by a Gargoyle.";
+OB_IMP = "%o tasted an Afrit's fire.";
+OB_CACO = "%o was devastated by an Ironlich.";
+OB_BARON = "%o was struck down by a Slaughtaur's fireball.";
+OB_KNIGHT = "%o was struck down by a Centaur's fireball.";
+OB_SPIDER = "%o was swept from the board by Korax.";
+OB_BABY = "%o was rattled by an Ophidian.";
+OB_CYBORG = "%o was splattered by a Minotaur.";
+OB_WOLFSS = "%o got hexed by an Evil Mage.";

@@ -1,0 +1,427 @@
+flickerlight PHOENIXFLAME
+{
+    color 0.7 0.4 0.0
+    size 48
+    secondarySize 56
+    chance 0.5
+}
+
+object PlasmaBall
+{
+    frame PLSSA { light PHOENIXFLAME }
+    frame PLSSB { light PHOENIXFLAME }
+}
+
+flickerlight THROWHAMMER
+{
+    color 1.0 0.2 0.0
+    size 48
+    secondarySize 52
+    chance 0.4
+}
+
+flickerlight THROWHAMMER_X1
+{
+    color 1.0 0.7 0.0
+    size 48
+    secondarySize 56
+    chance 0.4
+}
+
+flickerlight THROWHAMMER_X3
+{
+    color 1.0 0.7 0.0
+    size 72
+    secondarySize 80
+    chance 0.4
+}
+
+flickerlight THROWHAMMER_X4
+{
+    color 0.8 0.8 0.0
+    size 80
+    secondarySize 84
+    chance 0.4
+}
+
+flickerlight THROWHAMMER_X5
+{
+    color 0.5 0.5 0.0
+    size 64
+    secondarySize 72
+    chance 0.4
+}
+
+object Rocket
+{
+    frame MISLA { light THROWHAMMER }
+    frame MISLB { light THROWHAMMER }
+    frame MISLC { light THROWHAMMER }
+    frame MISLD { light THROWHAMMER }
+    frame MISLE { light THROWHAMMER }
+    frame MISLF { light THROWHAMMER }
+    frame MISLG { light THROWHAMMER }
+    frame MISLH { light THROWHAMMER }
+
+    frame MISLI { light THROWHAMMER_X1 }
+    frame MISLK { light THROWHAMMER_X3 }
+    frame MISLM { light THROWHAMMER_X4 }
+    frame MISLO { light THROWHAMMER_X4 }
+    frame MISLQ { light THROWHAMMER_X5 }
+}
+
+flickerlight ARCHFIRE1
+{
+    color 1.0 1.0 0.0
+    size 24
+    secondarySize 32
+    chance 0.3
+    offset 0 8 0
+}
+
+flickerlight ARCHFIRE2
+{
+    color 1.0 1.0 0.0
+    size 40
+    secondarySize 48
+    chance 0.3
+    offset 0 24 0
+}
+
+flickerlight ARCHFIRE3
+{
+    color 1.0 1.0 0.0
+    size 64
+    secondarySize 72
+    chance 0.3
+    offset 0 32 0
+}
+
+flickerlight ARCHFIRE4
+{
+    color 0.8 0.8 0.0
+    size 64
+    secondarySize 72
+    chance 0.3
+    offset 0 40 0
+}
+
+flickerlight ARCHFIRE5
+{
+    color 0.8 0.8 0.0
+    size 64
+    secondarySize 72
+    chance 0.3
+    offset 0 48 0
+}
+
+flickerlight ARCHFIRE6
+{
+    color 0.6 0.6 0.0
+    size 48
+    secondarySize 56
+    chance 0.3
+    offset 0 64 0
+}
+
+flickerlight ARCHFIRE7
+{
+    color 0.4 0.4 0.0
+    size 32
+    secondarySize 40
+    chance 0.3
+    offset 0 72 0
+}
+
+flickerlight ARCHFIRE8
+{
+    color 0.2 0.2 0.0
+    size 16
+    secondarySize 24
+    chance 0.3
+    offset 0 80 0
+}
+
+object BFGExtra
+{
+    frame FIREA { light ARCHFIRE1 }
+    frame FIREB { light ARCHFIRE2 }
+    frame FIREC { light ARCHFIRE3 }
+    frame FIRED { light ARCHFIRE4 }
+    frame FIREE { light ARCHFIRE5 }
+    frame FIREF { light ARCHFIRE6 }
+    frame FIREG { light ARCHFIRE7 }
+    frame FIREH { light ARCHFIRE8 }
+}
+
+flickerlight MUMMYATK
+{
+    color 1.0 1.0 0.0
+    size 48
+    secondarySize 56
+    chance 0.4
+}
+
+object Herexen_ShotgunGuy
+{
+    frame MUMMQ { light MUMMYATK }
+}
+
+flickerlight2 MAGEATK
+{
+    color 0.0 0.0 1.0
+    size 48
+    secondarySize 56
+    interval 1
+    offset 0 40 0
+}
+
+object Herexen_ChaingunGuy
+{
+    frame MAGEF { light MAGEATK }
+}
+
+object WolfensteinSS
+{
+    frame CPOSF { light MAGEATK }
+}
+
+flickerlight FGARG
+{
+    color 1.0 1.0 0.0
+    size 40
+    secondarySize 48
+    chance 0.4
+}
+
+flickerlight FGARGATK
+{
+    color 1.0 1.0 0.0
+    size 56
+    secondarySize 64
+    chance 0.4
+}
+
+object DoomImp
+{
+    frame TROOA { light FGARG }
+    frame TROOB { light FGARG }
+    frame TROOC { light FGARG }
+    frame TROOD { light FGARG }
+    frame TROOH { light FGARG }
+    frame TROOI { light FGARG }
+    frame TROOJ { light FGARG }
+
+    frame TROOK { light FGARGATK }
+}
+
+pointlight ICEGUYATK
+{
+    color 0.3 0.3 1.0
+    size 64
+}
+
+pointlight ICEBALL
+{
+    color 0.3 0.3 1.0
+    size 56
+}
+
+flickerlight ICEBALL_X1
+{
+    color 0.3 0.3 1.0
+    size 56
+    secondarySize 64
+    chance 0.3
+}
+
+flickerlight ICEBALL_X2
+{
+    color 0.3 0.3 0.7
+    size 64
+    secondarySize 72
+    chance 0.3
+}
+
+flickerlight ICEBALL_X3
+{
+    color 0.2 0.2 0.4
+    size 72
+    secondarySize 74
+    chance 0.3
+}
+
+flickerlight ICEBALL_X4
+{
+    color 0.0 0.0 0.2
+    size 74
+    secondarySize 80
+    chance 0.3
+}
+
+pointlight ICESHARD
+{
+    color 0.3 0.3 1.0
+    size 40
+}
+
+object FatShot
+{
+    frame FATBA { light ICEBALL }
+    frame FATBB { light ICEBALL }
+    frame FATBC { light ICEBALL }
+
+    frame FATBD { light ICEBALL_X1 }
+    frame FATBE { light ICEBALL_X2 }
+    frame FATBF { light ICEBALL_X3 }
+    frame FATBG { light ICEBALL_X4 }
+}
+
+object Fatso
+{
+    frame FATTG { light ICEGUYATK }
+}
+
+pointlight TAURBALL
+{
+    color 0.2 0.2 1.0
+    size 48
+}
+
+flickerlight TAURBALL_X1
+{
+    color 0.2 0.2 1.0
+    size 56
+    secondarySize 64
+    chance 0.4
+}
+
+flickerlight TAURBALL_X2
+{
+    color 0.2 0.2 0.7
+    size 64
+    secondarySize 72
+    chance 0.4
+}
+
+flickerlight TAURBALL_X3
+{
+    color 0.1 0.1 0.5
+    size 72
+    secondarySize 80
+    chance 0.4
+}
+
+flickerlight TAURBALL_X4
+{
+    color 0.0 0.0 0.3
+    size 80
+    secondarySize 88
+    chance 0.4
+}
+
+object Herexen_BaronBall
+{
+    frame CTFXA { light TAURBALL }
+
+    frame CTFXB { light TAURBALL_X1 }
+    frame CTFXC { light TAURBALL_X2 }
+    frame CTFXD { light TAURBALL_X3 }
+    frame CTFXE { light TAURBALL_X4 }
+    frame CTFXF { light TAURBALL_X4 }
+}
+
+object Herexen_Archvile
+{
+    frame TFOGA { light DTFOG1 }
+    frame TFOGC { light DTFOG2 }
+}
+
+flickerlight DTFOG1G
+{
+    color 1.0 1.0 1.0
+    size 56
+    secondarySize 64
+    chance 0.4
+}
+
+flickerlight DTFOG3G
+{
+    color 1.0 1.0 1.0
+    size 24
+    secondarySize 32
+    chance 0.4
+}
+
+object ArchvileFire
+{
+    frame TFOGA { light DTFOG1G }
+    frame TFOGC { light DTFOG2G }
+}
+
+flickerlight HARCHATK
+{
+    color 1.0 0.0 1.0
+    size 64
+    secondarySize 72
+    chance 0.4
+}
+
+object SpiderMastermind
+{
+    frame SPIDF { light HARCHATK }
+    frame SPIDG { light HARCHATK }
+}
+
+pointlight REDAXE
+{
+    color 1.0 0.0 0.0
+    size 32
+}
+
+flickerlight REDAXE_X1
+{
+    color 0.7 0.0 0.0
+    size 32
+    secondarySize 48
+    chance 0.3
+}
+
+flickerlight REDAXE_X2
+{
+    color 0.4 0.0 0.0
+    size 48
+    secondarySize 56
+    chance 0.3
+}
+
+flickerlight REDAXE_X3
+{
+    color 0.2 0.0 0.0
+    size 56
+    secondarySize 64
+    chance 0.3
+}
+
+object RevenantTracer
+{
+    frame MANFA { light REDAXE }
+
+    frame RAXEB { light REDAXE_X1 }
+    frame RAXEC { light REDAXE_X2 }
+    frame RAXED { light REDAXE_X3 }
+}
+
+flickerlight2 PLAYERATK
+{
+    color 1.0 1.0 1.0
+    size 48
+    secondarySize 56
+    interval 1
+    offset 0 40 0
+}
+
+object HerexenPlayer
+{
+    frame PLAYF { light PLAYERATK }
+}
