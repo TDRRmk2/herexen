@@ -50,6 +50,8 @@ Actor Herexen_Zombieman : Zombieman replaces Zombieman
 		MUMM NO 5
 		MUMM P -1
 		Stop
+    XDeath:
+        Stop
 	Raise:
 		MUMM ONMLKJI 5
 		Goto See
