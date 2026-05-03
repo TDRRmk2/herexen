@@ -1,0 +1,183 @@
+strings
+{
+	STR_GOTSTIM 	"Crystal Vial"
+	STR_GOTMEDINEED "Quartz Flask"
+	STR_GOTMEDIKIT 	"Quartz Flask"
+	STR_GOTARMOR 	"Falcon Shield"
+	STR_GOTMEGA 	"Chainmail Armor"
+	STR_GOTSUPER 	"Mystic Urn"
+
+	STR_GOTCLIP 	"Energy Orb"
+	STR_GOTCLIPBOX 	"Large Energy Orb"
+	STR_GOTSHELLS 	"Blue Mana"
+	STR_GOTSHELLBOX "Large Blue Mana"
+	STR_GOTROCKET 	"Red Mana"
+	STR_GOTROCKBOX 	"Large Red Mana"
+	STR_GOTCELL 	"Flame Orb"
+	STR_GOTCELLBOX 	"Inferno Orb"
+
+	STR_GOTCHAINSAW "Gauntlets of the Necromancer"
+	STR_GOTSHOTGUN 	"Jade Wand"
+	STR_GOTSHOTGUN2 "Ruby Wand"
+	STR_GOTCHAINGUN "Blaster"
+	STR_GOTLAUNCHER "Hammer of Retribution"
+	STR_GOTPLASMA 	"Phoenix Rod"
+	STR_GOTBFG9000 	"Fire Spell"
+
+	STR_SPR_STIM "PTN1"
+	STR_SPR_MEDI "PTN2"
+	STR_SPR_ARM1 "FALC"
+	STR_SPR_ARM2 "CMAL"
+	STR_SPR_BON2 "ARM3"
+	STR_SPR_SOUL "SPHL"
+	STR_SPR_PVIS "TRCH"
+
+	STR_SPR_CLIP "AMB1"
+	STR_SPR_AMMO "AMB2"
+	STR_SPR_SHEL "MAN3"
+	STR_SPR_SBOX "MAN4"
+	STR_SPR_ROCK "MAN1"
+	STR_SPR_BROK "MAN2"
+	STR_SPR_CELL "AMP1"
+	STR_SPR_CELP "AMP2"
+
+	STR_SPR_CSAW "WGNT"
+	STR_SPR_SHOT "WJAD"
+	STR_SPR_SGN2 "WRUB"
+	STR_SPR_MGUN "WBLS"
+	STR_SPR_LAUN "WFHM"
+	STR_SPR_PLAS "WPHX"
+	STR_SPR_BFUG "WMCF"
+
+	STR_SPR_PUNG "FPCH"
+	STR_SPR_SAWG "GAUN"
+	STR_SPR_PISG "MWND"
+	STR_SPR_SHTG "JADE"
+	STR_SPR_SHT2 "RUBY"
+	STR_SPR_CHGG "BLSR"
+	STR_SPR_MISG "FHMR"
+	STR_SPR_PLSG "PHNX"
+	STR_SPR_BFGG "CONF"
+	STR_SPR_MISL "FHFX"
+	STR_SPR_PLSS "FX09"
+	STR_SPR_BFS1 "NONE"
+	STR_SPR_BFE1 "SPIR"
+
+	STR_SPR_POSS "MUMM"
+	STR_SPR_TROO "FDMN"
+	STR_SPR_BAL1 "FX15"
+	STR_SPR_SARG "ETTN"
+	STR_SPR_HEAD "LICH"
+	STR_SPR_SKEL "KNIG"
+	STR_SPR_BAL2 "FX07"
+	STR_SPR_SKUL "IMPX"
+	STR_SPR_VILE "BISH"
+	STR_SPR_PLSE "BISG"
+	STR_SPR_MANF "RAXE"
+	STR_SPR_CYBR "MNTR"
+	STR_SPR_FATT "ICEY"
+	STR_SPR_FATB "ICPR"
+	STR_SPR_PAIN "WRTH"
+	STR_SPR_BOSS "CENT"
+	STR_SPR_BOS2 "NULL"
+	STR_SPR_BAL7 "CTFX"
+	STR_SPR_BSPI "SNKE"
+	STR_SPR_SPID "KORX"
+	STR_SPR_CPOS "MAGE"
+
+	STR_SFX_POSIT2 "POSIT1"
+	STR_SFX_POSIT3 "POSIT1"
+	STR_SFX_PODTH2 "PODTH1"
+	STR_SFX_PODTH3 "PODTH1"
+	STR_SFX_POSACT "POSIT1"
+	STR_SFX_DMACT "SGTSIT"
+	STR_SFX_KNTSIT "BRSACT" // repurposing both hellknight sounds into centaur's missing sounds
+	STR_SFX_KNTDTH "BRSPAI"
+	STR_SFX_BGSIT2 "BGSIT1"
+	STR_SFX_BGDTH2 "BGDTH1"
+	STR_SFX_SKEACT "SKESIT"
+	STR_SFX_HOOF "CYBPAI"
+	STR_SFX_SKEPCH "PUNCH"
+}
+
+misc
+{
+	bfgCellsPerShot 60
+	initialBullets 60
+}
+
+ammo 0
+{
+	pickup 12
+}
+
+thing WolfensteinSS free states
+
+#define QLOWER_OFFS Offset(1, 72)
+#define QRAISE_OFFS Offset(1, 62)
+
+//state protect 52 to 53
+state protect S_PLASMAFLASH1 to S_PLASMAFLASH2
+
+state protect S_VILE_HEAL1 to S_VILE_HEAL3
+
+state free S_BRAINEXPLODE1 to S_BRAINEXPLODE3
+
+state fill S_BRAINEXPLODE1
+{
+	FHFX MO 10 Bright
+	FHFX R 10 Bright A_BrainExplode
+	Stop
+}
+
+state protect S_BRAINEXPLODE1 to S_BRAINEXPLODE3
+
+thing GreenArmor free states
+thing BlueArmor free states
+thing ArmorBonus free states
+thing SoulSphere free states
+thing Infrared free states
+
+thing Clip free states
+thing ClipBox free states
+thing Cell free states
+thing CellPack free states
+
+weapon Fist free states
+weapon Chainsaw free states
+weapon Pistol free states
+weapon Shotgun free states
+weapon SuperShotgun free states
+weapon Chaingun free states
+weapon RocketLauncher free states
+thing Rocket free states
+weapon PlasmaRifle free states
+thing PlasmaBall free states
+weapon BFG9000 free states
+thing BFGBall free states
+thing BFGExtra free states
+thing BFG9000 free states
+
+thing Zombieman free states
+thing ShotgunGuy free states
+thing ChaingunGuy free states
+thing DoomImp free states
+thing DoomImpBall free states
+thing Demon free states
+thing Cacodemon free states
+thing CacodemonBall free states
+thing Revenant free states
+thing RevenantTracer free states
+thing PainElemental free states
+thing LostSoul free states
+thing Archvile free states
+thing ArchvileFire free states
+thing Fatso free states
+thing FatShot free states
+thing HellKnight free states
+thing BaronOfHell free states
+thing BaronBall free states
+thing ArachnotronPlasma free states
+thing Arachnotron free states
+thing Cyberdemon free states
+thing SpiderMastermind free states

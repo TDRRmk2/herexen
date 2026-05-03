@@ -1,0 +1,59 @@
+thing DeadLostSoul
+{
+	clear states
+	states
+	{
+	Spawn:
+		NULL A 1
+		Stop
+	}
+}
+
+thing DeadCacodemon
+{
+	clear states
+	states
+	{
+	Spawn:
+		LICH I 1
+		Loop
+	}
+}
+
+thing DeadDemon
+{
+	clear states
+	states
+	{
+	Spawn:
+		ETTN Q 1
+		Loop
+	}
+}
+
+thing DeadDoomImp
+{
+	clear states
+	states
+	{
+	Spawn:
+		FDMN P 1
+		Loop
+	}
+}
+
+thing DeadZombieman
+{
+	clear states
+	states
+	{
+	Spawn:
+		MUMM P 1
+		Loop
+	}
+}
+
+thing DeadShotgunGuy : thing DeadZombieman
+{
+	ednum 19
+}

@@ -1,0 +1,111 @@
+thing GreenArmor "Falcon Shield"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		FALC A 6
+		FALC A 7 Bright
+		Loop
+	}
+}
+
+thing BlueArmor "Chainmail Armor"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		CMAL A 6
+		CMAL A 7 Bright
+		Loop
+	}
+}
+
+thing ArmorBonus
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		ARM3 A 6
+		ARM3 A 7 Bright
+		Loop
+	}
+}
+
+thing SoulSphere "Mystic Urn"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		SPHL A 6
+		SPHL A 7 Bright
+		Loop
+	}
+}
+
+thing Infrared "Torch"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		TRCH AB 3 Bright
+		Loop
+	}
+}
+
+thing Clip "Energy Orb (small)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMB1 ABC 4 Bright
+		Loop
+	}
+}
+
+thing ClipBox "Energy Orb (large)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMB2 ABC 4 Bright
+		Loop
+	}
+}
+
+thing Cell "Energy Orb (small)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMP1 ABC 4 Bright
+		Loop
+	}
+}
+
+thing CellPack "Energy Orb (large)"
+{
+	clear states
+
+	states
+	{
+	Spawn:
+		AMP2 ABC 4 Bright
+		Loop
+	}
+}
