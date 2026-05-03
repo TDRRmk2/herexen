@@ -427,6 +427,7 @@ check function doRelease() {
 check function doDist() {
 
 	projectFile = getBuildDirectory() + "/" + getProjectWAD();
+	patchFile = getBuildDirectory() + "/" + getPatchFile();
 	outTextFile = getBuildDirectory() + "/" + getProjectTXT();
 	outDistZipFile = getDistDirectory() + "/" + getProjectZip();
 	outDistTextFile = getDistDirectory() + "/" + getProjectTXT();
@@ -444,6 +445,7 @@ check function doDist() {
 	println("Zipping project to " + outDistZipFile + "...");
 	zipfiles(outDistZipFile, [
 		projectFile, 
+		patchFile,
 		outTextFile
 	]);
 
