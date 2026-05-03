@@ -398,7 +398,7 @@ thing Archvile "Bishop"
 		TFOG AC 5 Bright
     Melee: // try to stay away from the player
 		NONE A 1
-		BISH AAAAAAA 0 A_VileChase
+		BISH AAAAAAAA 0 A_VileChase
 		NONE A 1
 		TFOG C 6 Bright
 		TFOG A 6 Bright
@@ -409,8 +409,7 @@ thing Archvile "Bishop"
 		Goto See
 	Missile:
 		TFOG C 6 Bright A_VileTarget
-		TFOG A 5 Bright A_VileTarget
-		BISH A 1 Bright A_BspiAttack
+		TFOG A 6 Bright
 		Goto LightAttack
 	Pain:
 		BISH C 6
@@ -441,10 +440,11 @@ thing ArchvileFire "Bishop Clone"
 	-SOLID
 	+SHOOTABLE
 	+TRANSLATION
+	+TRANSLATION2
 	+NOBLOOD
 	-NOBLOCKMAP
 	Health 1
-	Radius 8
+	Radius 16
 	Speed -50
 
 	clear states
@@ -455,18 +455,16 @@ thing ArchvileFire "Bishop Clone"
 		NONE A 1 A_Look
 		Wait
 	See:
-		BISG AAA 0 A_Chase
-		NONE A 1
-	Missile:
-		TFOG CA 5 Bright A_FaceTarget
-		BISG D 4 Bright A_FaceTarget
-		BISG E 4 Bright A_FaceTarget
-		BISG F 1 Bright	A_TroopAttack
-		BISG F 7 Bright A_Fall
-		Goto S_TFOG
+        NONE AAAAAA 0 A_Chase
+        NONE A 1
+        TFOG ABABCDEF 6 Bright
+        TFOG G 1 Bright A_PainAttack
+        TFOG G 5 Bright A_Fall
+        TFOG HIJ 6 Bright
+        Stop
 	Death:
-		BISG C 1
-		Goto S_TFOG
+		FIRE ACEGH 5 Bright
+		Stop
 	}
 }
 
